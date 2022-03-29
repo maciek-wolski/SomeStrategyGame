@@ -18,16 +18,23 @@ public class Health : MonoBehaviour
     {
         return currentHealth;
     }
+
 #endregion
 
     private void Start() {
+        currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damageValue)
-    {
+    public void TakeDamage(float damageValue){
         if (currentHealth <= 0.0f) { return; }
         if (currentHealth > 0.0f) { currentHealth -= damageValue; }
         if (currentHealth > 0.0f) { return; }
         OnDie?.Invoke();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)){
+            TakeDamage(50);
+        }
     }
 }

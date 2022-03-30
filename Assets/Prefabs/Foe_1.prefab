@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3091080630769603435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8418839187525461016}
+  m_Layer: 0
+  m_Name: AimAtPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8418839187525461016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091080630769603435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5337731063825188319}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4118188451320116560
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,11 +151,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5337731063825188319}
+  - component: {fileID: 5124702673071741181}
   - component: {fileID: 4104687164185199467}
   - component: {fileID: 4535048999023993270}
   - component: {fileID: 593977215808064930}
   - component: {fileID: 9156160686258283827}
   - component: {fileID: 9218309698053553559}
+  - component: {fileID: 3094145697643245122}
+  - component: {fileID: 1257167216941837533}
   m_Layer: 0
   m_Name: Foe_1
   m_TagString: Untagged
@@ -145,9 +178,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4131981393075224267}
+  - {fileID: 8418839187525461016}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5124702673071741181
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173638009921597344}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!135 &4104687164185199467
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -198,6 +248,7 @@ MonoBehaviour:
   id: 0
   health: {fileID: 9218309698053553559}
   foePrice: 50
+  ownerId: -1
 --- !u!114 &9156160686258283827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,13 +256,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8173638009921597344}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64e6b31594e6c644f8fd4e2aae750e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 0}
-  agent: {fileID: 0}
+  agent: {fileID: 4535048999023993270}
   attackRange: 2
   enemyFoeDetectionRange: 6
 --- !u!114 &9218309698053553559
@@ -226,4 +277,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d04fb9dd1a4ff43b3d050973f8ee06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimAtPoint: {fileID: 8418839187525461016}
   maxHealth: 150
+--- !u!135 &3094145697643245122
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173638009921597344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1257167216941837533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173638009921597344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdc6a555955d2d409408cf60f62dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foe: {fileID: 593977215808064930}
+  foeMovement: {fileID: 9156160686258283827}
+  attackRange: 2.5
+  attackDamage: 20
+  enemyHealthScript: {fileID: 0}

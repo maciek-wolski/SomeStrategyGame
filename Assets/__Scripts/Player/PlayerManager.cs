@@ -50,10 +50,7 @@ public class PlayerManager : MonoBehaviour
 
     private void HandleOnFoeDestroy(Foe foe)
     {
-        if (foe.GetOwnerId() != id) { return; }
-        // for (int i = 0; i < myFoes.Count; i++)
-        //     Debug.Log($"myfoe.. {i}, {myFoes[i]}, foe passed in constructor {foe}");
-        
+        if (foe.GetOwnerId() != id) { return; }        
         myFoes.Remove(foe);
     }
 
@@ -63,11 +60,13 @@ public class PlayerManager : MonoBehaviour
         Foe foeToSpawn = foePrefabs.Find(x => x.GetFoeId() == foeIdToSpawn);
         //check if player has enough money
         if (myMoney < foeToSpawn.GetFoePrice()) { return; }
-        //make instance of new object and set its ownerId
+        //make instance of new object and set its ownerId and target point
         GameObject newFoeObject = foeToSpawn.gameObject;
         Foe newFoeScript = newFoeObject.GetComponent<Foe>();
         newFoeScript.SetOwnerId(GetPlayerID());
-        //instantiate either on point1 (left) or point2 (right)
+        FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
+        newFoeMovementScript.SetTargetPoint(targetPoint);
+        //calculate instantiate position
         float minx = spawnPoints[1].position.x, maxx = spawnPoints[0].position.x;
         float minz = spawnPoints[1].position.z, maxz = spawnPoints[0].position.z;
         Vector3 newSpawnPoint = new Vector3(

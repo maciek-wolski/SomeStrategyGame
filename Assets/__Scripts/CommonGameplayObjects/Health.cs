@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
+    [SerializeField] public Transform aimAtPoint = null;
+    [SerializeField] private float maxHealth = 100.0f;
     private float currentHealth;
     public event Action OnDie;
 
 #region Getters
-    public float GetMaxHealth()
-    {
+    public float GetMaxHealth(){
         return maxHealth;
     }
-    public float GetCurrentHealth()
-    {
+    public float GetCurrentHealth(){
         return currentHealth;
     }
 
+#endregion
+#region Setters
 #endregion
 
     private void Start() {

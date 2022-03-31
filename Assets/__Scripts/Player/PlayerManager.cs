@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
+
     [SerializeField] private int id;
     [SerializeField] private List<Foe> foePrefabs = new List<Foe>();
     [SerializeField] private List<Foe> myFoes = new List<Foe>();
+    [SerializeField] private List<Tower> myTowers = new List<Tower>();
     [SerializeField] private Transform targetPoint = null;
     [Tooltip("Max 2\n 1 - bottom left corner\n 2 - top right corner")]
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>(2);
@@ -30,16 +33,24 @@ public class PlayerManager : MonoBehaviour
 #region Setters
 #endregion
 
+    private void Awake() {
+        instance = this;
+    }
     private void OnEnable() {
         if (spawnPoints.Count != 2) { 
             throw new Exception($"Wrong allocation\n read --spawnPoints-- property description"); 
         }
         Foe.OnFoeDestroy += HandleOnFoeDestroy;
         Foe.OnFoeSpawned += HandleOnFoeSpawned;
+        Tower.OnTowerSetOwnerId += HandleOnTowerSpawned;
+        Tower.OnTowerDestroyed += HandleOnTowerDestroyed;
     }
+
     private void OnDisable() {
         Foe.OnFoeDestroy -= HandleOnFoeDestroy;
         Foe.OnFoeSpawned -= HandleOnFoeSpawned;
+        Tower.OnTowerSetOwnerId -= HandleOnTowerSpawned;
+        Tower.OnTowerDestroyed -= HandleOnTowerDestroyed;
     }
 
     private void HandleOnFoeSpawned(Foe foe)
@@ -52,6 +63,19 @@ public class PlayerManager : MonoBehaviour
     {
         if (foe.GetOwnerId() != id) { return; }        
         myFoes.Remove(foe);
+    }
+
+    private void HandleOnTowerDestroyed(Tower tower)
+    {
+        if (tower.GetOwnerId() != id) { return; }
+        Debug.Log($"here..{tower}");
+        myTowers.Remove(tower);
+    }
+
+    private void HandleOnTowerSpawned(Tower tower)
+    {
+        if (tower.GetOwnerId() != id) { return; }
+        myTowers.Add(tower);
     }
 
     public void SpawnFoe(int foeIdToSpawn)

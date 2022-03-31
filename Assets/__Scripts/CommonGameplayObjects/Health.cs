@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] public Transform aimAtPoint = null;
     [SerializeField] private float maxHealth = 100.0f;
-    private float currentHealth;
+    [SerializeField] private float currentHealth = -1.0f;
     public event Action OnDie;
 
 #region Getters

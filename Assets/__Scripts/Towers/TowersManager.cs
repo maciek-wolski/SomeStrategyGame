@@ -34,8 +34,6 @@ public class TowersManager : MonoBehaviour
         currBuildingTowerFor = null;
     }
     public void ButtonBuildTower(HoldingTower holdingTower){
-        Debug.Log($"Tower.getholdingTower = {holdingTower.GetHoldingTower().name}");
-        Debug.Log($"Tower.getholdingTower tower component = {holdingTower.GetHoldingTower().GetComponent<Tower>()}");
         GameObject tower = holdingTower.GetHoldingTower();
         currBuildingTowerFor.ReceivedBuildTowerCommand(tower);
         currBuildingTowerFor = null;

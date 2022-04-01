@@ -55,26 +55,26 @@ public class PlayerManager : MonoBehaviour
 
     private void HandleOnFoeSpawned(Foe foe)
     {
-        if (foe.GetOwnerId() != id) { return; }
+        if (foe.GetFoeHealth().GetOwnerId() != id) { return; }
         myFoes.Add(foe);
     }
 
     private void HandleOnFoeDestroy(Foe foe)
     {
-        if (foe.GetOwnerId() != id) { return; }        
+        if (foe.GetFoeHealth().GetOwnerId() != id) { return; }        
         myFoes.Remove(foe);
     }
 
     private void HandleOnTowerDestroyed(Tower tower)
     {
-        if (tower.GetOwnerId() != id) { return; }
+        if (tower.GetTowerHealth().GetOwnerId() != id) { return; }
         Debug.Log($"here..{tower}");
         myTowers.Remove(tower);
     }
 
     private void HandleOnTowerSpawned(Tower tower)
     {
-        if (tower.GetOwnerId() != id) { return; }
+        if (tower.GetTowerHealth().GetOwnerId() != id) { return; }
         myTowers.Add(tower);
     }
 
@@ -86,8 +86,10 @@ public class PlayerManager : MonoBehaviour
         if (myMoney < foeToSpawn.GetFoePrice()) { return; }
         //make instance of new object and set its ownerId and target point
         GameObject newFoeObject = foeToSpawn.gameObject;
-        Foe newFoeScript = newFoeObject.GetComponent<Foe>();
-        newFoeScript.SetOwnerId(GetPlayerID());
+        Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
+        newFoeHealthScript.SetOwnerId(GetPlayerID());
+        // Foe newFoeScript = newFoeObject.GetComponent<Foe>();
+        // newFoeScript.SetOwnerId(GetPlayerID());
         FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
         newFoeMovementScript.SetTargetPoint(targetPoint);
         //calculate instantiate position

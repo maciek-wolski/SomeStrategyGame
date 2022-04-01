@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] public Transform aimAtPoint = null;
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float currentHealth = -1.0f;
+    [SerializeField] private int ownerId = -1;
     public event Action OnDie;
 
 #region Getters
@@ -17,9 +18,15 @@ public class Health : MonoBehaviour
     public float GetCurrentHealth(){
         return currentHealth;
     }
+    public int GetOwnerId(){
+        return ownerId;
+    }
 
 #endregion
 #region Setters
+    public void SetOwnerId(int newOwnerId){
+        ownerId = newOwnerId;
+    }
 #endregion
 
     private void Start() {

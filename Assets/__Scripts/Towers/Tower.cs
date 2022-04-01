@@ -8,7 +8,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private Health health = null;
     [SerializeField] private int towerPrice;
-    [SerializeField] private int ownerId = -1;
     [SerializeField] private GameObject towerDestroyedUI = null;
 
     public static event Action<Tower> OnTowerSetOwnerId;
@@ -18,21 +17,17 @@ public class Tower : MonoBehaviour
     public int GetTowerPrice(){
         return towerPrice;
     }
-    public int GetOwnerId(){
-        return ownerId;
+    public Health GetTowerHealth(){
+        return health;
     }
 #endregion
 #region Setters
-    public void SetOwnerId(int newOwnerId){
-        ownerId = newOwnerId;
-        Debug.Log($"spawned: {this}");
-        OnTowerSetOwnerId?.Invoke(this);
-    }
 #endregion
 
     private void OnEnable() {
         if (towerDestroyedUI.activeInHierarchy) { towerDestroyedUI.SetActive(false); }
         health.OnDie += HandleOnDie;
+        OnTowerSetOwnerId?.Invoke(this);
     }
     private void OnDisable() {
         health.OnDie -= HandleOnDie;

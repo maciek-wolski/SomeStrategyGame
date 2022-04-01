@@ -50,7 +50,7 @@ public class BuildingTower : MonoBehaviour
         Tower tower = towerObject.GetComponent<Tower>();
         if (playerManager.GetMyMoney() < tower.GetTowerPrice()) { return; }
         playerManager.ReduceMyMoney(tower.GetTowerPrice());
-        towerObject.GetComponent<Tower>().SetOwnerId(ownerId);
+        towerObject.GetComponent<Health>().SetOwnerId(ownerId);
         currentlyPlacedTower = Instantiate(towerObject, gameObject.transform.position, towerObject.transform.rotation);
     }
 }

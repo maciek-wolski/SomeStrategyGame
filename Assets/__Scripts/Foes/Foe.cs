@@ -8,7 +8,6 @@ public class Foe : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private Health health = null;
     [SerializeField] private int foePrice;
-    [SerializeField] private int ownerId = -1;
 
     public static event Action<Foe> OnFoeDestroy; 
     public static event Action<Foe> OnFoeSpawned;
@@ -17,20 +16,16 @@ public class Foe : MonoBehaviour
     public int GetFoeId(){
         return id;
     }
-    public int GetOwnerId(){
-        return ownerId;
-    }
     public int GetFoePrice(){
         return foePrice;
+    }
+    public Health GetFoeHealth(){
+        return health;
     }
 
 #endregion
 
 #region Setters
-    public void SetOwnerId(int newOwnerId){
-        ownerId = newOwnerId;
-    }
-
 #endregion
 
     private void OnEnable() {

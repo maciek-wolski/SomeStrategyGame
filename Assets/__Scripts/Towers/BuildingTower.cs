@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class BuildingTower : MonoBehaviour
+public class BuildingTower : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField] private LayerMask buildingSpotLayer = new LayerMask();
     [SerializeField] TowersManager towersManager = null;
     [SerializeField] GameObject towerPlacementUI = null;
     [SerializeField] private int ownerId = -1;
     [SerializeField] private GameObject currentlyPlacedTower = null;
     private PlayerManager playerManager;
+    private Camera mainCamera;
 
 #region Getters
     public GameObject GetCurrentlyPlacedTower(){
@@ -25,17 +28,22 @@ public class BuildingTower : MonoBehaviour
 
     private void Start() {
         playerManager = PlayerManager.instance;
+        mainCamera = Camera.main;
     }
-    private void OnMouseOver() {
-        if (playerManager.GetPlayerID() != ownerId){ return; }
-        //detecting mouse click
-        if (Mouse.current.leftButton.wasPressedThisFrame){
-            //cant place tower on already taken spot by healthy tower           
-            if (currentlyPlacedTower != null){
+
+    //checking if player pressed lmb over building spot
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Left) { return; }
+    }
+    //releasing handle
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildingSpotLayer)){
+            if (currentlyPlacedTower != null) { 
                 Health towerHealth = currentlyPlacedTower.GetComponent<Health>();
-                Debug.Log($"Tower health= {towerHealth.GetCurrentHealth()}/{towerHealth.GetMaxHealth()}");
                 if (towerHealth.GetCurrentHealth() <= 0){
-                    //tower health got to 0, clean this spot for new tower.
                     Destroy(currentlyPlacedTower);
                     currentlyPlacedTower = null;
                 }

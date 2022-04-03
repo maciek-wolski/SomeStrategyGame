@@ -13,8 +13,8 @@ public class SpawnButtons : MonoBehaviour
     [SerializeField] private List<FoeBuyButtonDisplay> foeButtonDisplays = new List<FoeBuyButtonDisplay>();
 
     private void Start() {
-        if (buyableFoes.Length > 5 || foeButtonDisplays.Count > 5) {
-            throw new Exception("size of buyableFoes and foeButtonDisplays cant go above 5!");
+        if (buyableFoes.Length != 5 || foeButtonDisplays.Count != 5) {
+            throw new Exception("size of buyableFoes and foeButtonDisplays has to be = 5!");
         }
         var sortedBuyableFoes = buyableFoes.OrderBy(x => x.GetFoePrice()).ToArray();
         buyableFoes = sortedBuyableFoes;

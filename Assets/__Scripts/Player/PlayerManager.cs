@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("Max 2\n 1 - bottom left corner\n 2 - top right corner")]
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>(2);
     [SerializeField] private float myMoney = 100.0f;
+    [SerializeField] private TMP_Text resourceInfoText = null;
 
     
 #region Getters
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         if (spawnPoints.Count != 2) { 
             throw new Exception($"Wrong allocation\n read --spawnPoints-- property description"); 
         }
+        resourceInfoText.text = $"{myMoney}";
         Foe.OnFoeDestroy += HandleOnFoeDestroy;
         Foe.OnFoeSpawned += HandleOnFoeSpawned;
         Tower.OnTowerSetOwnerId += HandleOnTowerSpawned;
@@ -53,6 +56,7 @@ public class PlayerManager : MonoBehaviour
         Tower.OnTowerDestroyed -= HandleOnTowerDestroyed;
     }
 
+    #region customEvents
     private void HandleOnFoeSpawned(Foe foe)
     {
         if (foe.GetFoeHealth().GetOwnerId() != id) { return; }
@@ -77,6 +81,7 @@ public class PlayerManager : MonoBehaviour
         if (tower.GetTowerHealth().GetOwnerId() != id) { return; }
         myTowers.Add(tower);
     }
+    #endregion
 
     public void SpawnFoe(int foeIdToSpawn)
     {
@@ -84,6 +89,7 @@ public class PlayerManager : MonoBehaviour
         Foe foeToSpawn = foePrefabs.Find(x => x.GetFoeId() == foeIdToSpawn);
         //check if player has enough money
         if (myMoney < foeToSpawn.GetFoePrice()) { return; }
+        ReduceMyMoney(foeToSpawn.GetFoePrice());
         //make instance of new object and set its ownerId and target point
         GameObject newFoeObject = foeToSpawn.gameObject;
         Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
@@ -105,6 +111,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ReduceMyMoney(float reduceValue){
         myMoney -= reduceValue;
+        resourceInfoText.text = $"{myMoney}";
     }
 
 }

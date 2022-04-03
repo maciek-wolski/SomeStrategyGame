@@ -41,10 +41,13 @@ public class FoeCombat : MonoBehaviour
 
     private void Update() {
         if (enemyHealthScript != null){
+            float distance = Vector3.Distance(transform.position, enemyHealthScript.gameObject.transform.position);
             foeMovement.SetTargetPoint(enemyHealthScript.gameObject.transform);
             if ((lastAttackTime + attackCooldown) < Time.realtimeSinceStartup){
-                enemyHealthScript.TakeDamage(attackDamage);
-                lastAttackTime = Time.realtimeSinceStartup;
+                if (distance <= attackRange){
+                    enemyHealthScript.TakeDamage(attackDamage);
+                    lastAttackTime = Time.realtimeSinceStartup;
+                }
             }
             if (enemyHealthScript.GetCurrentHealth() <= 0){
                 enemyHealthScript = null;

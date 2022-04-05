@@ -21,6 +21,9 @@ public class Health : MonoBehaviour
     public int GetOwnerId(){
         return ownerId;
     }
+    public Transform GetAimAtPoint(){
+        return aimAtPoint;
+    }
 
 #endregion
 #region Setters

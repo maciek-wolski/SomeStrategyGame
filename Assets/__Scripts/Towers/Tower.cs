@@ -10,6 +10,8 @@ public class Tower : MonoBehaviour
     [SerializeField] private int towerPrice;
     [SerializeField] private GameObject towerDestroyedUI = null;
 
+    [Header("Components to off when destroyed")]
+    [SerializeField] private TowerCombat towerCombat = null;
     public static event Action<Tower> OnTowerSetOwnerId;
     public static event Action<Tower> OnTowerDestroyed;
 
@@ -40,5 +42,6 @@ public class Tower : MonoBehaviour
     private void HandleOnDie()
     {
         towerDestroyedUI.SetActive(true);
+        towerCombat.enabled = false;
     }
 }

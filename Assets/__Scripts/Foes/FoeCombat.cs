@@ -9,34 +9,21 @@ public class FoeCombat : MonoBehaviour
     [SerializeField] private float attackRange = 2.5f;
     [SerializeField] private float attackDamage = 20.0f;
     [SerializeField] private float attackCooldown = 1.0f;
-
+    [SerializeField] private DetectEnemy detectEnemy = null;
     //serialize field just to see it easier in the inspector while testing
     [SerializeField] private Health enemyHealthScript = null;
+    
     private float lastAttackTime = 0.0f;
-    private void OnTriggerEnter(Collider other) {
-        if (enemyHealthScript != null) { return; }
-        //checking current target if its object with foe component in it then its already fighting
-        //checking if object can be targeted
-        if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
-        //checking if it belongs to the same player
-        if (enemyHealth.GetOwnerId() == foe.GetFoeHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
-        //getting reference to enemy health script
-        enemyHealthScript = other.gameObject.GetComponent<Health>();
-        //setting target point to the founded enemy
-        foeMovement.SetTargetPoint(other.gameObject.transform);
-    }
 
-    private void OnTriggerStay(Collider other) {
-        if (enemyHealthScript != null) { return; }
-        //checking current target if its object with foe component in it then its already fighting
-        //checking if object can be targeted
-        if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
-        //checking if it belongs to the same player
-        if (enemyHealth.GetOwnerId() == foe.GetFoeHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
-        //getting reference to enemy health script
+#region Getters
+    public Health GetEnemyHealthScript(){
+        return enemyHealthScript;
+    }
+#endregion
+    
+    public void FoundTarget(Transform target, Health enemyHealth){
         enemyHealthScript = enemyHealth;
-        //setting target point to the founded enemy
-        foeMovement.SetTargetPoint(other.gameObject.transform);
+        foeMovement.SetTargetPoint(target);
     }
 
     private void Update() {
@@ -58,5 +45,4 @@ public class FoeCombat : MonoBehaviour
             foeMovement.SetTargetPoint(foeMovement.GetOriginalTargetPoint());
         }
     }
-
 }

@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1438485117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1438485118}
+  - component: {fileID: 1438485119}
+  - component: {fileID: 1438485120}
+  m_Layer: 0
+  m_Name: EnemyDetection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1438485118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438485117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5337731063825188319}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1438485119
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438485117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.55
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1438485120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438485117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18742eede73356a46b57de46a969175f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: 9218309698053553559}
+  foeCombat: {fileID: 1257167216941837533}
 --- !u!1 &3091080630769603435
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,10 +216,9 @@ GameObject:
   - component: {fileID: 593977215808064930}
   - component: {fileID: 9156160686258283827}
   - component: {fileID: 9218309698053553559}
-  - component: {fileID: 3094145697643245122}
   - component: {fileID: 1257167216941837533}
   m_Layer: 0
-  m_Name: Foe_1
+  m_Name: Foe_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,6 +237,7 @@ Transform:
   m_Children:
   - {fileID: 4131981393075224267}
   - {fileID: 8418839187525461016}
+  - {fileID: 1438485118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -209,7 +268,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &4535048999023993270
 NavMeshAgent:
@@ -279,20 +338,7 @@ MonoBehaviour:
   aimAtPoint: {fileID: 8418839187525461016}
   maxHealth: 150
   currentHealth: -1
-  ownerId: 0
---- !u!135 &3094145697643245122
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8173638009921597344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Center: {x: 0, y: 0.5, z: 0}
+  ownerId: -1
 --- !u!114 &1257167216941837533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,4 +356,5 @@ MonoBehaviour:
   attackRange: 6
   attackDamage: 20
   attackCooldown: 1
+  detectEnemy: {fileID: 1438485120}
   enemyHealthScript: {fileID: 0}

@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
     public List<Foe> GetMyFoes(){
         return myFoes;
     }
-    public float GetMyMoney(){
+    public float GetPlayerMoney(){
         return myMoney;
     }
 
@@ -94,8 +94,6 @@ public class PlayerManager : MonoBehaviour
         GameObject newFoeObject = foeToSpawn.gameObject;
         Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
         newFoeHealthScript.SetOwnerId(GetPlayerID());
-        // Foe newFoeScript = newFoeObject.GetComponent<Foe>();
-        // newFoeScript.SetOwnerId(GetPlayerID());
         FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
         newFoeMovementScript.SetTargetPoint(targetPoint);
         //calculate instantiate position
@@ -107,6 +105,20 @@ public class PlayerManager : MonoBehaviour
             UnityEngine.Random.Range(minz, maxz)
         );
         Instantiate(newFoeObject, newSpawnPoint, newFoeObject.gameObject.transform.rotation);
+    }
+    public void SpawnFoe(int foeIdToSpawn, Vector3 spawnPoint){
+        //find foe in prefab list
+        Foe foeToSpawn = foePrefabs.Find(x => x.GetFoeId() == foeIdToSpawn);
+        //check if player has enough money
+        if (myMoney < foeToSpawn.GetFoePrice()) { return; }
+        ReduceMyMoney(foeToSpawn.GetFoePrice());
+        //make instance of new object and set its ownerId and target point
+        GameObject newFoeObject = foeToSpawn.gameObject;
+        Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
+        newFoeHealthScript.SetOwnerId(GetPlayerID());
+        FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
+        newFoeMovementScript.SetTargetPoint(targetPoint);
+        Instantiate(newFoeObject, spawnPoint, newFoeObject.transform.rotation);
     }
 
     public void ReduceMyMoney(float reduceValue){

@@ -8,6 +8,7 @@ public class Foe : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private Health health = null;
     [SerializeField] private int foePrice;
+    [SerializeField] private GameObject foePreview = null;
 
     public static event Action<Foe> OnFoeDestroy; 
     public static event Action<Foe> OnFoeSpawned;
@@ -22,9 +23,11 @@ public class Foe : MonoBehaviour
     public Health GetFoeHealth(){
         return health;
     }
+    public GameObject GetFoePreview(){
+        return foePreview;
+    }
 
 #endregion
-
 #region Setters
 #endregion
 

@@ -10,7 +10,7 @@ public class SpawnButtons : MonoBehaviour
     [Tooltip("Number of buyable foes up to 5!")]
     [SerializeField] private Foe[] buyableFoes = new Foe[5];
     [Tooltip("Number of foe buttons goes up to 5!")]
-    [SerializeField] private List<FoeBuyButtonDisplay> foeButtonDisplays = new List<FoeBuyButtonDisplay>();
+    [SerializeField] private List<PlacingFoeButton> foeButtonDisplays = new List<PlacingFoeButton>();
 
     private void Start() {
         if (buyableFoes.Length != 5 || foeButtonDisplays.Count != 5) {
@@ -21,7 +21,7 @@ public class SpawnButtons : MonoBehaviour
         for (int i = 0; i < buyableFoes.Length; i++){
             if (buyableFoes[i] == null) { break; }
             foeButtonDisplays[i].SetPriceText($"{buyableFoes[i].GetFoePrice().ToString()}$");
-            foeButtonDisplays[i].SetFoeOnThisSpot(buyableFoes[i]);
+            foeButtonDisplays[i].SetFoe(buyableFoes[i]);
         }
     }    
 }

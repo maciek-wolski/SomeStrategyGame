@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: foePrice
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3314251908256285610, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+      propertyPath: foePreview
+      value: 
+      objectReference: {fileID: 7973754625896812825, guid: 9460b2c9af5003f4aa61ef051a96c63b, type: 3}
     - target: {fileID: 6101873758357512616, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
       propertyPath: m_Name
       value: Foe_4

@@ -56,7 +56,7 @@ public class BuildingTower : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void ReceivedBuildTowerCommand(GameObject towerObject){
         Tower tower = towerObject.GetComponent<Tower>();
-        if (playerManager.GetMyMoney() < tower.GetTowerPrice()) { return; }
+        if (playerManager.GetPlayerMoney() < tower.GetTowerPrice()) { return; }
         playerManager.ReduceMyMoney(tower.GetTowerPrice());
         towerObject.GetComponent<Health>().SetOwnerId(ownerId);
         currentlyPlacedTower = Instantiate(towerObject, gameObject.transform.position, towerObject.transform.rotation);

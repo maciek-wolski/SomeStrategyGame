@@ -14,7 +14,7 @@ public class HandleUnlockingFoe : MonoBehaviour
         unlockTextPrice.text = $"Unlock - {unlockPrice}$";
     }
     public void ButtonOnUnlockClick(){
-        if ((playerManager.GetMyMoney() - unlockPrice) < 0) { return; }
+        if ((playerManager.GetPlayerMoney() - unlockPrice) < 0) { return; }
         playerManager.ReduceMyMoney(unlockPrice);
         lockedGameObject.SetActive(false);
         unlockedGameObject.SetActive(true);

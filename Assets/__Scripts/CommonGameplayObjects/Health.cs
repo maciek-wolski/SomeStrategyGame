@@ -9,7 +9,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private float currentHealth = -1.0f;
     [SerializeField] private int ownerId = -1;
+    [SerializeField] private Health enemyHealthScript = null;
     public event Action OnDie;
+    public event Action<Transform> OnFoundEnemy;
 
 #region Getters
     public float GetMaxHealth(){
@@ -24,11 +26,17 @@ public class Health : MonoBehaviour
     public Transform GetAimAtPoint(){
         return aimAtPoint;
     }
+    public Health GetEnemyHealthScript(){
+        return enemyHealthScript;
+    }
 
 #endregion
 #region Setters
     public void SetOwnerId(int newOwnerId){
         ownerId = newOwnerId;
+    }
+    public void SetEnemyHealthScript(Health newEnemyHealthScript){
+        enemyHealthScript = newEnemyHealthScript;
     }
 #endregion
 
@@ -43,6 +51,12 @@ public class Health : MonoBehaviour
         OnDie?.Invoke();
     }
 
+    public void FoundEnemy(Transform enemyTransform, Health foundEnemyHealth){
+        enemyHealthScript = foundEnemyHealth;
+        OnFoundEnemy?.Invoke(enemyTransform);
+    }
+
+    //just for testing
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)){
             TakeDamage(50);

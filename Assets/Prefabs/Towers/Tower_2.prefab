@@ -109,10 +109,26 @@ PrefabInstance:
     - target: {fileID: 1024489494023180853, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
       propertyPath: towerCombat
       value: 
-      objectReference: {fileID: -3496201115408496296}
+      objectReference: {fileID: 5094694974748046431}
+    - target: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: myHealth
+      value: 
+      objectReference: {fileID: 2402716883859720547}
+    - target: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: rotatePoint
+      value: 
+      objectReference: {fileID: 2182012483055934583}
+    - target: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: spawnProjectile
+      value: 
+      objectReference: {fileID: 2182012483055934583}
     - target: {fileID: 2156013055537195522, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348189834889326081, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3656009728463105320, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
       propertyPath: m_fontSize
@@ -204,25 +220,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
---- !u!1 &5981364776905189159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 633965605592561550, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
-  m_PrefabInstance: {fileID: 6615330245020962985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3823567505795375859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7988916992733590106, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
   m_PrefabInstance: {fileID: 6615330245020962985}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6195237894773293724 stripped
+--- !u!114 &2402716883859720547 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1024489494023180853, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8833376948124490186, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
   m_PrefabInstance: {fileID: 6615330245020962985}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5981364776905189159}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98f46ecb344c0845b1acf90d1753fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: b0d04fb9dd1a4ff43b3d050973f8ee06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5094694974748046431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+  m_PrefabInstance: {fileID: 6615330245020962985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8488d3e9fc63b42be426bbde9b8d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6959906211462731107 stripped
@@ -230,24 +252,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4276398864192898506, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
   m_PrefabInstance: {fileID: 6615330245020962985}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3496201115408496296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5981364776905189159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8488d3e9fc63b42be426bbde9b8d95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tower: {fileID: 6195237894773293724}
-  projectilePrefab: {fileID: 6434500296170954791, guid: 3ce419b5aa9352a41ae8b44fb156fe57, type: 3}
-  rotatePoint: {fileID: 2182012483055934583}
-  spawnProjectile: {fileID: 2182012483055934583}
-  rotationSpeed: 500
-  attackDamage: 10
-  attackCooldown: 2
-  attackRange: 5
-  enemyHealthScript: {fileID: 0}

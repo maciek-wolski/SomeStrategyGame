@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.55
+  m_Radius: 7
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &1438485120
 MonoBehaviour:
@@ -54,11 +54,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1438485117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18742eede73356a46b57de46a969175f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a7a4a2e8a4eff840b1885d7c2a3f95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: 9218309698053553559}
-  foeCombat: {fileID: 1257167216941837533}
 --- !u!1 &3091080630769603435
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +283,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -339,6 +338,7 @@ MonoBehaviour:
   maxHealth: 150
   currentHealth: -1
   ownerId: -1
+  enemyHealthScript: {fileID: 0}
 --- !u!114 &1257167216941837533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,10 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdc6a555955d2d409408cf60f62dd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myHealth: {fileID: 9218309698053553559}
   foe: {fileID: 593977215808064930}
   foeMovement: {fileID: 9156160686258283827}
-  attackRange: 6
+  attackRange: 3.5
   attackDamage: 20
   attackCooldown: 1
   detectEnemy: {fileID: 1438485120}
-  enemyHealthScript: {fileID: 0}

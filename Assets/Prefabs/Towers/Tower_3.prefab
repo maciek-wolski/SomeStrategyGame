@@ -44,7 +44,15 @@ PrefabInstance:
     - target: {fileID: 1024489494023180853, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
       propertyPath: towerCombat
       value: 
-      objectReference: {fileID: -1743924346678202006}
+      objectReference: {fileID: 5746678967216251825}
+    - target: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: rotatePoint
+      value: 
+      objectReference: {fileID: 1087784253224051510}
+    - target: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+      propertyPath: spawnProjectile
+      value: 
+      objectReference: {fileID: 1827362288204887641}
     - target: {fileID: 2156013055537195522, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -127,20 +135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
---- !u!1 &6517170000699502793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 633965605592561550, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
-  m_PrefabInstance: {fileID: 5962185132867471175}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6668239017021101426 stripped
+--- !u!114 &5746678967216251825 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1024489494023180853, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2125032552007492854, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
   m_PrefabInstance: {fileID: 5962185132867471175}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6517170000699502793}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98f46ecb344c0845b1acf90d1753fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: fe8488d3e9fc63b42be426bbde9b8d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &7630573133043614349 stripped
@@ -148,27 +151,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4276398864192898506, guid: 7086fd0e528ccce4bb8e7b7ae7bd3fdd, type: 3}
   m_PrefabInstance: {fileID: 5962185132867471175}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1743924346678202006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6517170000699502793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8488d3e9fc63b42be426bbde9b8d95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tower: {fileID: 6668239017021101426}
-  projectilePrefab: {fileID: 6434500296170954791, guid: 3ce419b5aa9352a41ae8b44fb156fe57, type: 3}
-  rotatePoint: {fileID: 1087784253224051510}
-  spawnProjectile: {fileID: 1827362288204887641}
-  rotationSpeed: 500
-  attackDamage: 10
-  attackCooldown: 2
-  attackRange: 5
-  enemyHealthScript: {fileID: 0}
 --- !u!1001 &9142457223334824306
 PrefabInstance:
   m_ObjectHideFlags: 0

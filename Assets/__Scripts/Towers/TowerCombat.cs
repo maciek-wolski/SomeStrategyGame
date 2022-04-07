@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerCombat : MonoBehaviour
 {
+    [SerializeField] private Health myHealth = null;
     [SerializeField] private Tower tower = null;
     [SerializeField] private GameObject projectilePrefab = null;
     [SerializeField] private Transform rotatePoint = null;
@@ -14,41 +16,53 @@ public class TowerCombat : MonoBehaviour
     private float lastAttackTime = 0.0f;
     [Tooltip("should be the same or bigger than detection range (sphere collider that is on trigger radius)")]
     [SerializeField] private float attackRange = 5.0f;
-    //serializeField just for testing
-    [SerializeField] private Health enemyHealthScript = null;
+
     private bool canAttack = false;
 
-    private void OnTriggerEnter(Collider other) {
-        if (enemyHealthScript != null) { return; }
-        //checking if object can be targeted
-        if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
-        //checking if it belongs to the same player or it's already destroyed
-        if (enemyHealth.GetOwnerId() == tower.GetTowerHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
-        enemyHealthScript = enemyHealth;
+    // private void OnTriggerEnter(Collider other) {
+    //     if (enemyHealthScript != null) { return; }
+    //     //checking if object can be targeted
+    //     if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
+    //     //checking if it belongs to the same player or it's already destroyed
+    //     if (enemyHealth.GetOwnerId() == tower.GetTowerHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
+    //     enemyHealthScript = enemyHealth;
+    //     Invoke(nameof(SetCanAttack), 1.0f);
+    // }
+
+    // private void OnTriggerStay(Collider other) {
+    //     if (enemyHealthScript != null) { return; }
+    //     //checking if object can be targeted
+    //     if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
+    //     //checking if it belongs to the same player or it's already destroyed
+    //     if (enemyHealth.GetOwnerId() == tower.GetTowerHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
+    //     enemyHealthScript = enemyHealth;
+    //     Invoke(nameof(SetCanAttack), 1.0f);
+    // }
+    private void OnEnable() {
+        myHealth.OnFoundEnemy += HandleOnFoundEnemy;
+    }
+    private void OnDisable() {
+        myHealth.OnFoundEnemy -= HandleOnFoundEnemy;
+    }
+
+    private void HandleOnFoundEnemy(Transform obj)
+    {
         Invoke(nameof(SetCanAttack), 1.0f);
     }
 
-    private void OnTriggerStay(Collider other) {
-        if (enemyHealthScript != null) { return; }
-        //checking if object can be targeted
-        if (!other.TryGetComponent<Health>(out Health enemyHealth)) { return; }
-        //checking if it belongs to the same player or it's already destroyed
-        if (enemyHealth.GetOwnerId() == tower.GetTowerHealth().GetOwnerId() || enemyHealth.GetCurrentHealth() <= 0) { return; }
-        enemyHealthScript = enemyHealth;
-        Invoke(nameof(SetCanAttack), 1.0f);
-    }
     private void SetCanAttack(){
         canAttack = true;
     }
     private void Update() {
-        if (enemyHealthScript != null){
+        Health enemyHealth = myHealth.GetEnemyHealthScript();
+        if (enemyHealth != null){
             //rotate attackPoint towards enemy
             Quaternion enemyRotation = 
-                Quaternion.LookRotation(enemyHealthScript.GetAimAtPoint().position - rotatePoint.position);
+                Quaternion.LookRotation(enemyHealth.GetAimAtPoint().position - rotatePoint.position);
             rotatePoint.rotation = 
                 Quaternion.RotateTowards(rotatePoint.rotation, enemyRotation, rotationSpeed*Time.deltaTime);
             //checking distance
-            Transform enemyTransform = enemyHealthScript.gameObject.transform;
+            Transform enemyTransform = enemyHealth.gameObject.transform;
             
             float distance = Vector3.Distance(transform.position, enemyTransform.position);
             if (distance > attackRange) { return; }
@@ -59,13 +73,13 @@ public class TowerCombat : MonoBehaviour
                 GameObject newProjectile = projectilePrefab;
                 Projectile projectile = newProjectile.GetComponent<Projectile>();
                 projectile.SetAttackDamage(attackDamage);
-                projectile.SetTargettedEnemy(enemyHealthScript);
+                projectile.SetTargettedEnemy(enemyHealth);
                 Instantiate(newProjectile, spawnProjectile.position, spawnProjectile.rotation);
                 lastAttackTime = Time.realtimeSinceStartup;
             }
             
-            if (enemyHealthScript.GetCurrentHealth() <= 0){
-                enemyHealthScript = null;
+            if (enemyHealth.GetCurrentHealth() <= 0){
+                myHealth.SetEnemyHealthScript(null);
                 canAttack = false;
                 return;
             }

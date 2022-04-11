@@ -44,14 +44,14 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damageValue){
+    public void TakeDamage(float damageValue) {
         if (currentHealth <= 0.0f) { return; }
         if (currentHealth > 0.0f) { currentHealth -= damageValue; }
         if (currentHealth > 0.0f) { return; }
         OnDie?.Invoke();
     }
 
-    public void FoundEnemy(Transform enemyTransform, Health foundEnemyHealth){
+    public void FoundEnemy(Transform enemyTransform, Health foundEnemyHealth) {
         enemyHealthScript = foundEnemyHealth;
         OnFoundEnemy?.Invoke(enemyTransform);
     }

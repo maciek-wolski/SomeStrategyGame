@@ -8,6 +8,7 @@ public class Foe : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private Health health = null;
     [SerializeField] private int foePrice;
+    [SerializeField] private float foeGoldIncome = 10.0f;
     [SerializeField] private GameObject foePreview = null;
 
     public static event Action<Foe> OnFoeDestroy; 
@@ -25,6 +26,9 @@ public class Foe : MonoBehaviour
     }
     public GameObject GetFoePreview(){
         return foePreview;
+    }
+    public float GetFoeGoldIncome(){
+        return foeGoldIncome;
     }
 
 #endregion

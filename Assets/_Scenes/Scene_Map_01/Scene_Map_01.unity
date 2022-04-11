@@ -936,6 +936,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &167293576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167293577}
+  - component: {fileID: 167293578}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167293577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167293576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1323125955}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167293578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167293576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e679ae5e1e1d1c242b1aa109031e17bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &175847584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1914,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 422534562}
-  - component: {fileID: 422534563}
   - component: {fileID: 422534564}
   m_Layer: 5
   m_Name: Foe3
@@ -1901,20 +1943,6 @@ RectTransform:
   m_AnchoredPosition: {x: -74, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &422534563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422534561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab6a496f8b39846b0e3003f243b295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1957928378}
-  priceText: {fileID: 1778755278}
 --- !u!114 &422534564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,7 +2103,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432420432}
-  - component: {fileID: 432420433}
   - component: {fileID: 432420434}
   m_Layer: 5
   m_Name: Foe4
@@ -2105,20 +2132,6 @@ RectTransform:
   m_AnchoredPosition: {x: 138.49997, y: -74.99997}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &432420433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432420431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab6a496f8b39846b0e3003f243b295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1957928378}
-  priceText: {fileID: 997168397}
 --- !u!114 &432420434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,8 +2291,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450963700}
+  - component: {fileID: 450963701}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2299,6 +2313,37 @@ Transform:
   m_Father: {fileID: 1323125955}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &450963701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450963699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050ca37044b5c7a4b9131be0dda4133d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  foePrefabs:
+  - {fileID: 4962729493332359043, guid: 231e769a0aa081344bf76154158751b6, type: 3}
+  - {fileID: 4962729493332359043, guid: b971ff014eb264347a964fe1678f0d91, type: 3}
+  - {fileID: 3314251908256285610, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+  - {fileID: 4215774774009357215, guid: e1516d684d9a6b54a841d8327f81e394, type: 3}
+  - {fileID: 8888637662971921392, guid: f51df64004e925545aa045c1f8133da9, type: 3}
+  targetPoint: {fileID: 1221656950}
+  spawnPoints:
+  - {fileID: 1129061007}
+  - {fileID: 1416065786}
+  wave1FoeIdToSpawn: 00000000
+  wave1FoeNumberToSpawn: 03000000
+  wave1TowerIdToSpawn: 
+  wave1TowerSpawnPoint: 
+  wave2FoeIdToSpawn: 
+  wave2FoeNumberToSpawn: 
+  wave2TowerIdToSpawn: 
+  wave2TowerSpawnPoint: 
 --- !u!1 &458413726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,7 +3352,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647914191}
-  - component: {fileID: 647914192}
   - component: {fileID: 647914193}
   m_Layer: 5
   m_Name: Foe5
@@ -3337,20 +3381,6 @@ RectTransform:
   m_AnchoredPosition: {x: 350.99997, y: -74.99997}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &647914192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647914190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab6a496f8b39846b0e3003f243b295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1957928378}
-  priceText: {fileID: 28766259}
 --- !u!114 &647914193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,7 +3536,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 662258781}
-  - component: {fileID: 662258782}
   - component: {fileID: 662258783}
   m_Layer: 5
   m_Name: Foe2
@@ -3536,20 +3565,6 @@ RectTransform:
   m_AnchoredPosition: {x: -286.50003, y: -74.99988}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &662258782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662258780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab6a496f8b39846b0e3003f243b295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1957928378}
-  priceText: {fileID: 789326720}
 --- !u!114 &662258783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,7 +3762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8173638009921597344, guid: b1c5e0bc2bbd6de4498e375c555a1c74, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9156160686258283827, guid: b1c5e0bc2bbd6de4498e375c555a1c74, type: 3}
       propertyPath: targetPoint
@@ -6551,6 +6566,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113433776}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1129061006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1129061007}
+  m_Layer: 0
+  m_Name: Enemy_SpawnPointBottomLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1129061007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129061006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.5, y: 0, z: -23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1742728248}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1181345762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7502,6 +7547,7 @@ Transform:
   - {fileID: 1957928377}
   - {fileID: 450963700}
   - {fileID: 1554140085}
+  - {fileID: 167293577}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7682,6 +7728,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365807876}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1416065785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1416065786}
+  m_Layer: 0
+  m_Name: Enemy_SpawnPointTopRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1416065786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416065785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.5, y: 0, z: -16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1742728248}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421105334
 GameObject:
   m_ObjectHideFlags: 0
@@ -8942,6 +9018,8 @@ Transform:
   - {fileID: 945703538}
   - {fileID: 1971785185}
   - {fileID: 1273245550}
+  - {fileID: 1416065786}
+  - {fileID: 1129061007}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9097,7 +9175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1797499739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10111,7 +10189,7 @@ GameObject:
   - component: {fileID: 1957928377}
   - component: {fileID: 1957928378}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10569,7 +10647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8173638009921597344, guid: b1c5e0bc2bbd6de4498e375c555a1c74, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9156160686258283827, guid: b1c5e0bc2bbd6de4498e375c555a1c74, type: 3}
       propertyPath: targetPoint
@@ -10938,7 +11016,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120639561}
-  - component: {fileID: 2120639562}
   - component: {fileID: 2120639563}
   m_Layer: 5
   m_Name: Foe1
@@ -10968,20 +11045,6 @@ RectTransform:
   m_AnchoredPosition: {x: -499.00003, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2120639562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120639560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab6a496f8b39846b0e3003f243b295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1957928378}
-  priceText: {fileID: 1181345764}
 --- !u!114 &2120639563
 MonoBehaviour:
   m_ObjectHideFlags: 0

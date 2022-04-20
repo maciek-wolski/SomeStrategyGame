@@ -216,6 +216,8 @@ GameObject:
   - component: {fileID: 9156160686258283827}
   - component: {fileID: 9218309698053553559}
   - component: {fileID: 1257167216941837533}
+  - component: {fileID: 5392691534641343258}
+  - component: {fileID: 1536921414073532137}
   m_Layer: 0
   m_Name: Foe_base
   m_TagString: Untagged
@@ -306,6 +308,8 @@ MonoBehaviour:
   id: 0
   health: {fileID: 9218309698053553559}
   foePrice: 50
+  foeGoldIncome: 10
+  foePreview: {fileID: 0}
 --- !u!114 &9156160686258283827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,3 +362,29 @@ MonoBehaviour:
   attackDamage: 20
   attackCooldown: 1
   detectEnemy: {fileID: 1438485120}
+--- !u!114 &5392691534641343258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173638009921597344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff9287ab07598a41b9a5b7e2baeb1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+--- !u!114 &1536921414073532137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173638009921597344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279edf1a4b242bf479f2762c38348836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}

@@ -72,7 +72,7 @@ public class TowerCombat : MonoBehaviour
             if ((lastAttackTime + attackCooldown) < Time.realtimeSinceStartup){
                 GameObject newProjectile = projectilePrefab;
                 Projectile projectile = newProjectile.GetComponent<Projectile>();
-                projectile.SetAttackDamage(attackDamage);
+                projectile.attackDamage = attackDamage;
                 projectile.SetTargettedEnemy(enemyHealth);
                 Instantiate(newProjectile, spawnProjectile.position, spawnProjectile.rotation);
                 lastAttackTime = Time.realtimeSinceStartup;

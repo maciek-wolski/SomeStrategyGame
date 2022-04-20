@@ -23,6 +23,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foe_4
       objectReference: {fileID: 0}
+    - target: {fileID: 6498323143183676319, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+      propertyPath: ownerId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544181116419369787, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+      propertyPath: targetPoint
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8057999332985719767, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -67,5 +75,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0a816646cf9518546a60c69c4493930c, type: 3}

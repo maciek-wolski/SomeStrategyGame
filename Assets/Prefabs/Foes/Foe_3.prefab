@@ -71,5 +71,6 @@ PrefabInstance:
       propertyPath: foePreview
       value: 
       objectReference: {fileID: 7973754625896812825, guid: e50864bcfbdfdf44aa098da184821164, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b971ff014eb264347a964fe1678f0d91, type: 3}

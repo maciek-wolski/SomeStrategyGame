@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8833376948124490186}
   - component: {fileID: 1024489494023180853}
   - component: {fileID: 2125032552007492854}
+  - component: {fileID: -121509161834978488}
+  - component: {fileID: -1245087248141348293}
   m_Layer: 0
   m_Name: Tower_base
   m_TagString: Untagged
@@ -65,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimAtPoint: {fileID: 7328008715775323924}
-  maxHealth: 500
+  maxHealth: 3000
   currentHealth: -1
   ownerId: 0
   enemyHealthScript: {fileID: 0}
@@ -107,6 +109,32 @@ MonoBehaviour:
   attackDamage: 10
   attackCooldown: 2
   attackRange: 7.5
+--- !u!114 &-121509161834978488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633965605592561550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff9287ab07598a41b9a5b7e2baeb1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
+--- !u!114 &-1245087248141348293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633965605592561550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279edf1a4b242bf479f2762c38348836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
 --- !u!1 &2156013055537195522
 GameObject:
   m_ObjectHideFlags: 0

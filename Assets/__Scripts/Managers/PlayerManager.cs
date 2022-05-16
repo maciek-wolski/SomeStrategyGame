@@ -88,7 +88,8 @@ public class PlayerManager : MonoBehaviour
         newFoeHealthScript.SetOwnerId(GetPlayerID());
         FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
         newFoeMovementScript.SetTargetPoint(targetPoint);
-        Instantiate(newFoeObject, spawnPoint, newFoeObject.transform.rotation);
+        Quaternion newRotation = new Quaternion(newFoeObject.transform.rotation.x, newFoeObject.transform.rotation.y + 180.0f, newFoeObject.transform.rotation.z, newFoeObject.transform.rotation.w);
+        Instantiate(newFoeObject, spawnPoint, newRotation);
     }
 
     public void ReduceMyMoney(float reduceValue){

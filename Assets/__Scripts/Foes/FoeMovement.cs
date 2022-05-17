@@ -5,11 +5,14 @@ using UnityEngine.AI;
 
 public class FoeMovement : MonoBehaviour
 {
-    [SerializeField] private Transform targetPoint = null;
+    [SerializeField] public Transform targetPoint = null;
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private float attackRange = 2.0f;
     [SerializeField] private float enemyFoeDetectionRange = 6.0f;
+    [SerializeField] private FoeAnimationHandle _animationScript = null;
     private Transform originalTargetPoint = null;
+
+    public bool canMove = true;
 
 #region Getters
     public Transform GetTargetPoint(){
@@ -21,13 +24,14 @@ public class FoeMovement : MonoBehaviour
 #endregion
 #region Setters
     public void SetTargetPoint(Transform newTargetPoint){
-        if (targetPoint != null) {
+        if (targetPoint != null && canMove) {
             targetPoint = newTargetPoint;
             if (!agent.isActiveAndEnabled) { return; }
             agent.SetDestination(targetPoint.position);
             return;
         }
         targetPoint = newTargetPoint;
+        if (!canMove) { agent.velocity = Vector3.zero; }
     }
 #endregion
 

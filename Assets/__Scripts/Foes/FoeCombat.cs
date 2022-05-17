@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class FoeCombat : MonoBehaviour
     [SerializeField] private float attackDamage = 20.0f;
     [SerializeField] private float attackCooldown = 1.0f;
     [SerializeField] private DetectEnemy detectEnemy = null;
+    [SerializeField] private FoeAnimationHandle animationScript = null;
     
     private float lastAttackTime = 0.0f;
     
@@ -24,10 +26,6 @@ public class FoeCombat : MonoBehaviour
         foeMovement.SetTargetPoint(enemyTransform);
     }
 
-    // public void FoundTarget(Transform target, Health enemyHealth){
-    //     foeMovement.SetTargetPoint(target);
-    // }
-
     private void Update() {
         Health enemyHealth = myHealth.GetEnemyHealthScript();
         if (enemyHealth != null){
@@ -36,6 +34,7 @@ public class FoeCombat : MonoBehaviour
             foeMovement.SetTargetPoint(enemyHealthTransform);
             if ((lastAttackTime + attackCooldown) < Time.realtimeSinceStartup){
                 if (distance <= attackRange){
+                    DoDamage(enemyHealth);
                     enemyHealth.TakeDamage(attackDamage);
                     lastAttackTime = Time.realtimeSinceStartup;
                 }
@@ -48,5 +47,15 @@ public class FoeCombat : MonoBehaviour
         if (enemyHealth == null){
             foeMovement.SetTargetPoint(foeMovement.GetOriginalTargetPoint());
         }
+    }
+
+    private void DoDamage(Health enemyHealth) {
+        lastAttackTime = Time.realtimeSinceStartup;
+        if (animationScript == null) {
+            enemyHealth.TakeDamage(attackDamage);
+            return;
+        }
+
+        animationScript.TriggerAttackAnimation(enemyHealth, attackDamage);
     }
 }

@@ -79,7 +79,7 @@ public class EnemyManager : MonoBehaviour
         Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
         newFoeHealthScript.SetOwnerId(GetEnemyId());
         FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
-        newFoeMovementScript.SetTargetPoint(targetPoint);
+        newFoeMovementScript.targetPoint = targetPoint;
         //calculate instantiate position
         float minx = spawnPoints[1].position.x, maxx = spawnPoints[0].position.x;
         float minz = spawnPoints[1].position.z, maxz = spawnPoints[0].position.z;
@@ -124,35 +124,4 @@ public class EnemyManager : MonoBehaviour
         }
         foeToSpawn.Clear();
     }
-
-    // private void Wave1(List<int> wave1FoeIdToSpawn) {
-    //     //wave1
-    //     //enemy spawns 3x foe_01
-    //     int howManyDifferentFoes = wave1FoeIdToSpawn.Count;
-    //     int counter = 0;
-    //     foreach (var item in wave1FoeIdToSpawn)
-    //     {
-    //         for (int i = 0; i < wave1FoeNumberToSpawn[counter]; i++) {
-    //             SpawnFoe(item);
-    //             Debug.Log($"Spawned {i} foe");
-    //         }
-    //         counter++;
-    //     }
-    // }
-
-    // private void Wave2() {
-    //     int howManyDifferentFoes = wave1FoeIdToSpawn.Count;
-    //     int counter = 0;
-    //     foreach (var item in wave1FoeIdToSpawn) {
-    //         for (int i = 0; i < wave1FoeNumberToSpawn[counter]; i++) {
-    //             SpawnFoe(item);
-    //             Debug.Log($"Spawned {i} foe");
-    //         }
-    //         counter++;
-    //     }
-
-    //     foreach (var item in wave1TowerIdToSpawn) {
-            
-    //     }
-    // }
 }

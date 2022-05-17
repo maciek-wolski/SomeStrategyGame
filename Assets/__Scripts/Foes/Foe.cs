@@ -34,7 +34,7 @@ public class Foe : MonoBehaviour
 #endregion
 #region Setters
 #endregion
-
+    
     private void OnEnable() {
         OnFoeSpawned?.Invoke(this);
         health.OnDie += HandleOnDie;
@@ -45,6 +45,9 @@ public class Foe : MonoBehaviour
 
     private void HandleOnDie()
     {
+        if (TryGetComponent<Animator>(out Animator anim)) { 
+            return;    
+        }
         Debug.Log($"Foe {gameObject.name} died..");
         Destroy(gameObject);
     }

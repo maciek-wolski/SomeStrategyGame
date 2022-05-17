@@ -87,7 +87,7 @@ public class PlayerManager : MonoBehaviour
         Health newFoeHealthScript = newFoeObject.GetComponent<Health>();
         newFoeHealthScript.SetOwnerId(GetPlayerID());
         FoeMovement newFoeMovementScript = newFoeObject.GetComponent<FoeMovement>();
-        newFoeMovementScript.SetTargetPoint(targetPoint);
+        newFoeMovementScript.targetPoint = targetPoint;
         Quaternion newRotation = new Quaternion(newFoeObject.transform.rotation.x, newFoeObject.transform.rotation.y + 180.0f, newFoeObject.transform.rotation.z, newFoeObject.transform.rotation.w);
         Instantiate(newFoeObject, spawnPoint, newRotation);
     }

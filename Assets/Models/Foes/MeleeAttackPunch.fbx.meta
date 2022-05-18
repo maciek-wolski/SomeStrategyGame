@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 97749f5bb6e6bde45a7cad91c66941a5
+guid: 215cdf73f65cbfa4ea1864e271462952
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Dying
+    second: MeleeAttack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -17,7 +17,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dying
+      name: MeleeAttack
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 132
+      lastFrame: 65
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -76,7 +76,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
+    nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0

@@ -2560,7 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050ca37044b5c7a4b9131be0dda4133d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWaves: 1
+  maxWaves: 5
   coolDownBetweenWaves: 20
   id: 1
   foePrefabs:
@@ -9068,7 +9068,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.9878936, y: 1}
+    m_SensorSize: {x: 1.9525317, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

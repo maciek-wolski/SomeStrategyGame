@@ -18,7 +18,11 @@ PrefabInstance:
     - target: {fileID: 3314251908256285610, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
       propertyPath: foePreview
       value: 
-      objectReference: {fileID: 7973754625896812825, guid: 9460b2c9af5003f4aa61ef051a96c63b, type: 3}
+      objectReference: {fileID: 5001738917310259782, guid: 9460b2c9af5003f4aa61ef051a96c63b, type: 3}
+    - target: {fileID: 3511557624178528383, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ff8d034c501682418bd5c13ade8ced7, type: 2}
     - target: {fileID: 6101873758357512616, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
       propertyPath: m_Name
       value: Foe_4
@@ -75,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8244854285657316886, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3300dcc6b8f899b4c959bcd8064fd23b, type: 2}
     - target: {fileID: 8604272291702148171, guid: 0a816646cf9518546a60c69c4493930c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -9,7 +9,6 @@ public class FoeMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private float attackRange = 2.0f;
     [SerializeField] private float enemyFoeDetectionRange = 6.0f;
-    [SerializeField] private FoeAnimationHandle _animationScript = null;
     private Transform originalTargetPoint = null;
 
     public bool canMove = true;

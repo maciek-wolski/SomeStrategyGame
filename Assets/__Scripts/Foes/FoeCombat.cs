@@ -35,7 +35,6 @@ public class FoeCombat : MonoBehaviour
             if ((lastAttackTime + attackCooldown) < Time.realtimeSinceStartup){
                 if (distance <= attackRange){
                     DoDamage(enemyHealth);
-                    enemyHealth.TakeDamage(attackDamage);
                     lastAttackTime = Time.realtimeSinceStartup;
                 }
             }

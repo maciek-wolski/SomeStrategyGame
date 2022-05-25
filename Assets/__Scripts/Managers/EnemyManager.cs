@@ -47,10 +47,6 @@ public class EnemyManager : MonoBehaviour
     {
         if (foe.GetFoeHealth().GetOwnerId() != id) { return; }
         myFoes.Remove(foe);
-        if (myFoes.Count == 0) {
-            currentWave++;
-            Debug.Log($"Wave {currentWave-1} changed to {currentWave}");
-        }
     }
 
     private void Update() {
